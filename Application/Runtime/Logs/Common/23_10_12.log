@@ -1,0 +1,18 @@
+[ 2023-10-12T20:48:31+08:00 ] 127.0.0.1 /index.php/Hone/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000003s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000165s ]
+ERR: 无法加载模块:Hone
+
+[ 2023-10-12T20:48:59+08:00 ] 127.0.0.1 /index.php/Hone/index/test
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000004s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000210s ]
+ERR: 无法加载模块:Hone
+
+[ 2023-10-12T20:49:03+08:00 ] 127.0.0.1 /index.php/Hone/index/test
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000004s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000164s ]
+ERR: 无法加载模块:Hone
+
