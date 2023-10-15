@@ -108,4 +108,66 @@ class UserController extends BaseController
             
         }
     }
+    
+    // 用户登录
+    public function login(){
+        //校验参数是否存在
+
+        if(!$_POST['phone']){
+            $return_data = array();
+            $return_data['error_code'] = 1;
+            $return_data['msg'] = '参数不足：phone';
+
+            $this->ajaxReturn($return_data);
+        }
+
+        if(!$_POST['password']){
+            $return_data = array();
+            $return_data['error_code'] = 1;
+            $return_data['msg'] = '参数不足：password';
+
+            $this->ajaxReturn($return_data);
+        }
+
+        $User = M('User');
+
+        $where = array();
+        $where['phone'] = $_POST['phone'];
+
+        $user = $User->where($where)->find();
+
+        if($user){
+            // dump($user);
+            //手机号存在，则校验密码是否正确
+            if(md5($_POST['password']) != $user['password']){
+                $return_data = array();
+                $return_data['error_code'] = '3';
+                $return_data['msg'] = '密码错误';
+
+                $this->ajaxReturn($return_data);
+            }
+            else{
+                $return_data = array();
+                $return_data['error_code'] = '0';
+                $return_data['msg'] = '登录成功';
+
+                $return_data['data']['user_id'] = $user['id'];
+                $return_data['data']['username'] = $user['username'];
+                $return_data['data']['phone'] = $user['phone'];
+                $return_data['data']['face_url'] = $user['face_url'];
+
+                $this->ajaxReturn($return_data);
+
+            }
+        }
+        else{
+            $return_data = array();
+            $return_data['error_code'] = 2;
+            $return_data['msg'] = '用户不存在，请注册';
+
+            $this->ajaxReturn($return_data);
+        }
+
+    }
+
 }
